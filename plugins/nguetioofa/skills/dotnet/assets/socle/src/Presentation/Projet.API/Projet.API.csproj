@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <!-- Un seul document OpenAPI : le générateur intégré du modèle de projet n'est pas utilisé. -->
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <!-- Remplace le conteneur par défaut ; FluentValidation arrive par la couche Application. -->
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Projet.Infrastructure\Projet.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Libraries\Projet.Application\Projet.Application.csproj" />
+    <ProjectReference Include="..\..\Libraries\Projet.Domain\Projet.Domain.csproj" />
+  </ItemGroup>
+</Project>

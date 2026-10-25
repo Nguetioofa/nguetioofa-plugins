@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Aucune référence, ni projet ni paquet : changer d'ORM, de framework web ou de conteneur ne touche pas le domaine. -->
+</Project>

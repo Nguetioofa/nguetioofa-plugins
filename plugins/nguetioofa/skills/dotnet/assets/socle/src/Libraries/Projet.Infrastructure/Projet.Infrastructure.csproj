@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Projet.Application\Projet.Application.csproj" />
+    <ProjectReference Include="..\Projet.Domain\Projet.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Libraries/">
+    <Project Path="Libraries/Projet.Application/Projet.Application.csproj" />
+    <Project Path="Libraries/Projet.Domain/Projet.Domain.csproj" />
+    <Project Path="Libraries/Projet.Infrastructure/Projet.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="Presentation/Projet.API/Projet.API.csproj" />
+  </Folder>
+</Solution>

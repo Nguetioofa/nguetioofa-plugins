@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- Anglais : mêmes clés que SharedResource.resx, sans exception. -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- ======================================================== Erreurs -->
+  <data name="Error.NotFound" xml:space="preserve">
+    <value>The requested resource was not found.</value>
+  </data>
+  <data name="Error.ValidationFailed" xml:space="preserve">
+    <value>One or more values are invalid.</value>
+  </data>
+  <data name="Error.Unauthorized" xml:space="preserve">
+    <value>You must be signed in to perform this action.</value>
+  </data>
+  <data name="Error.Forbidden" xml:space="preserve">
+    <value>You do not have the required permissions.</value>
+  </data>
+  <data name="Error.Unexpected" xml:space="preserve">
+    <value>An unexpected error occurred. Quote the trace identifier when reporting it.</value>
+  </data>
+
+  <!-- ============================================ Refus du protocole HTTP -->
+  <data name="Error.RouteNotFound" xml:space="preserve">
+    <value>This address does not match any API service.</value>
+  </data>
+  <data name="Error.MethodNotAllowed" xml:space="preserve">
+    <value>This operation is not allowed on this address.</value>
+  </data>
+  <data name="Error.NotAcceptable" xml:space="preserve">
+    <value>The requested response format is not available. The API responds in JSON.</value>
+  </data>
+  <data name="Error.UnsupportedMediaType" xml:space="preserve">
+    <value>The format of the content sent is not supported. Send JSON (application/json).</value>
+  </data>
+  <data name="Error.TooManyRequests" xml:space="preserve">
+    <value>Too many requests in a short time. Wait a moment before trying again.</value>
+  </data>
+  <data name="Error.RequestRejected" xml:space="preserve">
+    <value>The request was rejected.</value>
+  </data>
+
+  <!-- ======================================================== Validation -->
+  <data name="Validation.Required" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="Validation.MaxLength" xml:space="preserve">
+    <value>This field exceeds the allowed length.</value>
+  </data>
+  <data name="Validation.InvalidFormat" xml:space="preserve">
+    <value>This value does not have the expected format.</value>
+  </data>
+  <data name="Validation.InvalidJson" xml:space="preserve">
+    <value>The request body is not valid JSON, or does not have the expected shape.</value>
+  </data>
+  <data name="Validation.RequestBodyRequired" xml:space="preserve">
+    <value>A request body is required.</value>
+  </data>
+  <data name="Validation.InvalidForm" xml:space="preserve">
+    <value>The submitted form could not be read.</value>
+  </data>
+  <data name="Validation.RequestTooLarge" xml:space="preserve">
+    <value>The upload is larger than allowed: reduce the file.</value>
+  </data>
+  <data name="Validation.PageNumber" xml:space="preserve">
+    <value>Page number must be between 1 and {0}.</value>
+  </data>
+  <data name="Validation.SortBy" xml:space="preserve">
+    <value>Sorting refers to an unknown column.</value>
+  </data>
+  <data name="Validation.TextControlCharacter" xml:space="preserve">
+    <value>This text contains a control character, which is not allowed here. Type it again.</value>
+  </data>
+  <data name="Validation.TextLineBreakOrControl" xml:space="preserve">
+    <value>This field contains a line break, a tab or a control character, which are not allowed here. Type the text again.</value>
+  </data>
+</root>

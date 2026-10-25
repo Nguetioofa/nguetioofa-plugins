@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Ressource NEUTRE (français) : elle sert pour « fr » et de repli pour toute autre langue.
+    Familles : Error.* (codes d'erreur), Validation.* (validateurs), Enum.<Type>.<CODE> (libellés).
+    Toute clé ajoutée ici l'est aussi dans SharedResource.en.resx.
+  -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- ======================================================== Erreurs -->
+  <data name="Error.NotFound" xml:space="preserve">
+    <value>La ressource demandée est introuvable.</value>
+  </data>
+  <data name="Error.ValidationFailed" xml:space="preserve">
+    <value>Une ou plusieurs valeurs sont invalides.</value>
+  </data>
+  <data name="Error.Unauthorized" xml:space="preserve">
+    <value>Vous devez être connecté pour effectuer cette action.</value>
+  </data>
+  <data name="Error.Forbidden" xml:space="preserve">
+    <value>Vous n'avez pas les droits nécessaires.</value>
+  </data>
+  <data name="Error.Unexpected" xml:space="preserve">
+    <value>Une erreur inattendue s'est produite. Citez l'identifiant de trace pour le diagnostic.</value>
+  </data>
+
+  <!-- ============================================ Refus du protocole HTTP -->
+  <data name="Error.RouteNotFound" xml:space="preserve">
+    <value>Cette adresse ne correspond à aucun service de l'API.</value>
+    <comment>404 sans point d'entrée : l'appel lui-même est faux, pas la donnée.</comment>
+  </data>
+  <data name="Error.MethodNotAllowed" xml:space="preserve">
+    <value>Cette opération n'est pas permise sur cette adresse.</value>
+    <comment>405 : bonne adresse, mauvais verbe HTTP.</comment>
+  </data>
+  <data name="Error.NotAcceptable" xml:space="preserve">
+    <value>Le format de réponse demandé n'est pas disponible. L'API répond en JSON.</value>
+  </data>
+  <data name="Error.UnsupportedMediaType" xml:space="preserve">
+    <value>Le format du contenu envoyé n'est pas pris en charge. Envoyez du JSON (application/json).</value>
+  </data>
+  <data name="Error.TooManyRequests" xml:space="preserve">
+    <value>Trop de requêtes en peu de temps. Patientez un instant avant de réessayer.</value>
+  </data>
+  <data name="Error.RequestRejected" xml:space="preserve">
+    <value>La requête a été refusée.</value>
+  </data>
+
+  <!-- ======================================================== Validation -->
+  <data name="Validation.Required" xml:space="preserve">
+    <value>Ce champ est obligatoire.</value>
+  </data>
+  <data name="Validation.MaxLength" xml:space="preserve">
+    <value>Ce champ dépasse la longueur autorisée.</value>
+  </data>
+  <data name="Validation.InvalidFormat" xml:space="preserve">
+    <value>Cette valeur n'a pas le format attendu.</value>
+    <comment>Valeur d'un type incompatible (texte à la place d'un nombre, énumération mal écrite, paramètre répété).</comment>
+  </data>
+  <data name="Validation.InvalidJson" xml:space="preserve">
+    <value>Le contenu envoyé n'est pas un JSON valide, ou n'a pas la forme attendue.</value>
+    <comment>Corps illisible dans son ensemble : pas du JSON, ou un tableau au lieu d'un objet.</comment>
+  </data>
+  <data name="Validation.RequestBodyRequired" xml:space="preserve">
+    <value>Le corps de la requête est obligatoire.</value>
+    <comment>Corps absent ou égal à null.</comment>
+  </data>
+  <data name="Validation.InvalidForm" xml:space="preserve">
+    <value>Le formulaire envoyé est illisible.</value>
+  </data>
+  <data name="Validation.RequestTooLarge" xml:space="preserve">
+    <value>L'envoi dépasse la taille permise : réduisez le fichier.</value>
+  </data>
+  <data name="Validation.PageNumber" xml:space="preserve">
+    <value>Le numéro de page doit être compris entre 1 et {0}.</value>
+  </data>
+  <data name="Validation.SortBy" xml:space="preserve">
+    <value>Le tri demandé porte sur une colonne inconnue.</value>
+  </data>
+  <data name="Validation.TextControlCharacter" xml:space="preserve">
+    <value>Ce texte contient un caractère de contrôle, qui n'y est pas admis. Saisissez-le de nouveau, au clavier.</value>
+  </data>
+  <data name="Validation.TextLineBreakOrControl" xml:space="preserve">
+    <value>Ce champ contient un saut de ligne, une tabulation ou un caractère de contrôle, qui n'y sont pas admis. Saisissez le texte de nouveau, au clavier.</value>
+  </data>
+</root>

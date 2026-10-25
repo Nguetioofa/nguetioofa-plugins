@@ -1,0 +1,10 @@
+{
+  "name": "nguetioofa",
+  "displayName": "Méthode Nguetioofa",
+  "version": "1.0.0",
+  "description": "Méthode de travail de Nguetioofa pour tout projet .NET (API, MVC, Blazor) et tout front React + TypeScript, avec quatre agents génériques : développeur back, développeur front, relecteur à froid, aide.",
+  "author": { "name": "Nguetioofa" },
+  "homepage": "https://github.com/Nguetioofa/nguetioofa-plugins",
+  "repository": "https://github.com/Nguetioofa/nguetioofa-plugins",
+  "keywords": ["dotnet", "aspnetcore", "efcore", "react", "typescript", "agents"]
+}

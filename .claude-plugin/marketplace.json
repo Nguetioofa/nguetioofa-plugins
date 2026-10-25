@@ -1,0 +1,12 @@
+{
+  "name": "nguetioofa-plugins",
+  "owner": { "name": "Nguetioofa" },
+  "description": "Plugins personnels de Nguetioofa : méthode .NET et React, agents de développement génériques.",
+  "plugins": [
+    {
+      "name": "nguetioofa",
+      "source": "./plugins/nguetioofa",
+      "description": "Skills dotnet et react, agents dev-back, dev-front, verif et aide, utilisables dans n'importe quel projet."
+    }
+  ]
+}

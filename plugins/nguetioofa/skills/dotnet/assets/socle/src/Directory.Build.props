@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <!-- Un avertissement de nullabilité est un bug. -->
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <!-- Les commentaires XML de toutes les couches alimentent l'OpenAPI ; on commente le pourquoi, pas chaque membre. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ASP.NET Core pour ProblemDetails (dont dérive l'enveloppe) et la localisation. -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Projet.Domain\Projet.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" />
+    <!-- Les validateurs vivent ici : la règle appartient au cas d'usage, pas à la façade. -->
+    <PackageReference Include="FluentValidation" />
+  </ItemGroup>
+
+</Project>
