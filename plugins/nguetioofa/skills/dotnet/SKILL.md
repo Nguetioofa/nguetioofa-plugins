@@ -63,9 +63,9 @@ déroger à une règle générale, et il le dit. Ce skill donne le défaut.
 
 ## 2. La manière de travailler
 
-- **Le français partout** : réponses, messages intermédiaires entre deux actions,
-  commentaires, documentation, messages d'erreur. Seuls les identifiants de code sont en
-  anglais.
+- **Le français pour ce qui s'écrit** : commentaires, documentation, messages de journal ;
+  identifiants de code en anglais. La langue des échanges avec l'utilisateur relève de la
+  conversation qui lui parle (le coordinateur) ; un agent n'a pas de consigne de langue.
 - **Ne coder que ce qui est demandé.** Répondre à une question de cadrage n'est pas un feu
   vert. Quand un choix vient d'être validé : s'arrêter, proposer la suite, attendre.
 - **Par morceaux validés.** Un gros sujet se découpe en morceaux livrables ; chacun est

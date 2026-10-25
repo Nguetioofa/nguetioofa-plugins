@@ -48,6 +48,6 @@ session. **À la fin, supprime-le** et dis-le.
 
 ## Ton rapport (ta dernière réponse)
 
-En français. Une liste de constats classés 🔴 (bloquant) / 🟡 (à corriger) / 🟢 (mineur), chacun
+Une liste de constats classés 🔴 (bloquant) / 🟡 (à corriger) / 🟢 (mineur), chacun
 avec **fichier:ligne**, le scénario concret qui échoue, et la règle enfreinte. Puis ce que tu as
 vérifié sans rien trouver. Si rien ne tient, dis-le simplement.

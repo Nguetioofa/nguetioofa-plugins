@@ -74,7 +74,7 @@ session. **Tout** ce que tu crées hors du dépôt y va. **À la fin, supprime-l
 
 ## Ton rapport (ta dernière réponse)
 
-En français, court et précis :
+Court et précis :
 1. **Fait** : écrans et comportements, par morceau.
 2. **Vérifié** : typecheck, lint, tests (nombre), build, ce qui a été essayé dans le navigateur
    (langues, thèmes, largeurs, permissions).

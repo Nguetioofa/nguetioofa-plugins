@@ -74,7 +74,7 @@ journaux, scripts et fichiers d'essai). **À la fin, supprime-le** et dis-le.
 
 ## Ton rapport (ta dernière réponse)
 
-En français, court et précis. En tête, s'il y en a : **Migrations à appliquer**, dans l'ordre.
+Court et précis. En tête, s'il y en a : **Migrations à appliquer**, dans l'ordre.
 1. **Fait** : par thème.
 2. **Vérifié** : build, tests (nombre), ce qui a été essayé à l'exécution.
 3. **Pour le front** : version de l'API, ce qui a changé, ce que le front doit faire (s'il y en a un).

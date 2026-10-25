@@ -63,7 +63,9 @@ de Nguetioofa et se suffit à lui-même : ses fiches portent les modèles d'un p
 
 ## 2. La manière de travailler
 
-- **Le français partout** ; identifiants de code en anglais.
+- **Le français pour ce qui s'écrit** (commentaires, documentation) ; identifiants de code en
+  anglais. La langue des échanges avec l'utilisateur relève du coordinateur ; un agent n'a pas de
+  consigne de langue.
 - **Ne coder que ce qui est demandé.** Une question de cadrage n'est pas un feu vert.
   **Par morceaux validés** : annoncer le découpage, livrer un morceau vérifié, attendre la
   validation.

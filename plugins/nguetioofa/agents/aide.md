@@ -35,5 +35,5 @@ session. **Tout** ce que tu crées hors du dépôt y va. **À la fin, supprime-l
 
 ## Ton rapport (ta dernière réponse)
 
-En français, court : ce qui est fait, ce qui est vérifié (commande et résultat), les fichiers
+Court : ce qui est fait, ce qui est vérifié (commande et résultat), les fichiers
 touchés, et les questions éventuelles.
