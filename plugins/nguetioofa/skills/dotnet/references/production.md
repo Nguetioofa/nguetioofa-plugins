@@ -24,6 +24,21 @@ dans les décisions ouvertes du plan.
   supposée présente).
 - Swagger et les outils `/api/dev` **absents** hors développement (404).
 
+## En-têtes de sécurité
+
+Posés par l'API (un middleware, en tête du pipeline après les en-têtes transmis) ou par le proxy,
+**une seule fois** — dire lequel dans la conception :
+
+- **HSTS** hors développement (`UseHsts()`, `max-age` d'un an, `includeSubDomains` si tout le
+  domaine est en HTTPS), une fois HTTPS éprouvé sur le serveur ;
+- `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`,
+  `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'` sur les réponses JSON de
+  l'API (une page servie par l'API — MVC, Blazor — a sa propre CSP, plus large) ;
+- `Cache-Control: no-store` sur toute réponse qui porte une donnée de la personne connectée ;
+- pas d'en-tête `Server` (Kestrel : `AddServerHeader = false`), ni de version du framework.
+
+Un test d'intégration vérifie leur présence sur un 200, un 404 et un 500.
+
 ## Configuration et secrets
 
 - Hors développement : **variables d'environnement** ou coffre de secrets (`Auth__Issuer`),
@@ -56,6 +71,19 @@ dans les décisions ouvertes du plan.
   `Microsoft.EntityFrameworkCore` à `Warning` hors développement.
 - Le journal applicatif part vers un collecteur choisi à la mise en service (fichier tournant,
   service hébergé) : c'est une décision du plan, pas un défaut à improviser.
+- **Alerter, pas seulement tracer** : une alerte (email, messagerie de l'équipe) part sur une
+  rafale d'échecs de connexion ou de verrous de comptes, une exception d'isolation entre tenants,
+  un taux de `5xx` anormal, une tâche de fond qui échoue plusieurs passages de suite, un geste de
+  la plateforme (suspension, changement de permissions). Une alerte dit quoi, où, et le `traceId`,
+  jamais une donnée personnelle.
+
+## Dépendances et failles connues
+
+- Scan à chaque push (`dotnet list package --vulnerable --include-transitive`, et l'équivalent
+  du front) et à chaque mise en service ; une faille haute ou critique se corrige avant la suite.
+- Mises à jour des paquets regroupées, régulières (au moins à chaque phase), avec les tests
+  d'intégration au vert ; une version gardée en arrière pour une raison se note, avec sa raison,
+  dans le `CLAUDE.md` du projet.
 
 ## Base de données en production
 
@@ -72,7 +100,9 @@ dans les décisions ouvertes du plan.
   donnée associée liant le chiffré à sa ligne. Une seule classe chiffre et déchiffre.
 - La clé maîtresse **se sauvegarde à part de la base** (une sauvegarde sans la clé ne se lit
   plus) ; son changement suit une procédure écrite (rechiffrer avec la nouvelle, garder
-  l'ancienne le temps de la bascule). Ne jamais la changer sans elle.
+  l'ancienne le temps de la bascule). Ne jamais la changer sans elle. Cette procédure est
+  **écrite et éprouvée sur une base d'essai avant la mise en service**, pas le jour où une clé
+  fuit.
 - Une lecture d'une donnée chiffrée se **trace avant le déchiffrement** ; le journal ne porte ni
   le contenu ni le nom des champs.
 

@@ -81,8 +81,8 @@ public sealed class DevToolsController(AppDbContext db, IHostEnvironment environ
 
 ## Tests automatiques (xUnit)
 
-**Pour les fonctionnalités qui en valent la peine, pas pour tout.** La vérification
-courante reste à l'exécution. Méritent un test :
+**Tests unitaires : pour les règles qui en valent la peine, pas pour tout** (le filet de
+toutes les routes, ce sont les tests d'intégration HTTP, plus bas). Méritent un test unitaire :
 
 - les **règles de sécurité** (verrouillage, non-divulgation, rotation des jetons, codes,
   sessions fermées au bon moment) ;
@@ -123,11 +123,45 @@ Organisation (`Tests/<Projet>.Test/`) :
 
 Commande : `dotnet test src/<Projet>.slnx`. Rendre compte du nombre de tests qui passent.
 
+## Tests d'intégration HTTP : le filet de non-régression
+
+La vérification à l'exécution d'une livraison ne sert qu'une fois si ses appels sont jetés. Ce
+qui doit tenir **pour toujours** s'écrit en tests d'intégration, rejoués à chaque push.
+
+- **L'API entière en mémoire** : `WebApplicationFactory<Program>` (paquet
+  `Microsoft.AspNetCore.Mvc.Testing`, `public partial class Program` dans l'API), avec le vrai
+  pipeline (filtres, enveloppe, authentification, permissions) et une **vraie base** — une base
+  d'essai créée depuis le schéma de référence au début de la suite et supprimée à la fin (ou un
+  conteneur Testcontainers si Docker est là). Jamais le fournisseur EF en mémoire pour ces
+  tests : il ne connaît ni les contraintes, ni les transactions, ni le SQL du fournisseur.
+- **Pour chaque route** : le cas nominal, puis les refus principaux que sa documentation
+  annonce (validation sous le bon champ, introuvable, conflit de version, permission
+  manquante, ressource d'un autre — un 404) ; vérifier le statut, l'`errorCode` et l'état de la
+  base, pas le texte. Une route sensible a aussi son test « sans session » et « mauvais rôle ».
+- Un client par personne de test (cookies ou jeton propres), des données créées par l'API
+  elle-même, un préfixe de test, et des tests **indépendants** les uns des autres.
+- Ils se rangent à part (`Tests/<Projet>.IntegrationTests/`), sont plus lents que les tests
+  unitaires, et c'est voulu : ils prouvent ce que l'utilisateur verra.
+- Les scripts d'essai à la main (curl, Node) restent pour explorer un cas une fois ; dès qu'un
+  cas mérite d'être revu à chaque changement, il devient un test d'intégration.
+
+## Intégration continue
+
+**À chaque push**, sur le serveur du dépôt (GitHub Actions, Azure Pipelines) : restauration,
+`dotnet build` sans avertissement, tests unitaires, tests d'intégration sur une base de service
+(conteneur PostgreSQL ou SQL Server du pipeline), et le **scan des failles connues** :
+`dotnet list package --vulnerable --include-transitive` (une faille haute ou critique fait
+échouer le pipeline). Le pipeline s'écrit à l'étape 0 d'un projet, pas à la fin ; un pipeline
+rouge se répare avant toute autre étape.
+
 ## Tests d'architecture : les règles que le code ne doit jamais enfreindre
 
 Le meilleur garde-fou d'une règle de sécurité transversale : un test qui **lit les sources**
 (ou le code compilé) et refuse la forme fautive, partout, pour toujours.
 
+- **La taille d'un fichier** : un test refuse un fichier de code de plus de 400 lignes (hors
+  tests et code généré), sauf ceux d'une liste écrite avec leur raison — la règle « un sujet par
+  classe » ne tient pas sans lui.
 - Exemples : aucun `IgnoreQueryFilters()` sans argument ; en multi-tenant, aucune levée de
   l'isolation hors de sa **liste blanche** (fichier, table, champs qui sortent, appelants) ;
   aucun contexte EF dans la présentation ; aucune propriété `init` de création dans une demande de modification ; aucun

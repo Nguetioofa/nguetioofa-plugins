@@ -20,6 +20,15 @@ L'API reste seule juge : l'écran ne fait que ne pas proposer ce qu'elle refuser
   vide le cache. Une session fermée ailleurs lève les gardes sans rien demander.
 - Mobile : voir `structure.md` (jetons en stockage sécurisé, `Authorization: Bearer`).
 
+### Front et API sur deux sites
+
+Si l'API n'est pas sur le même site que le front (domaines différents), les cookies sont en
+`SameSite=None` et l'API exige une protection CSRF : le client envoie ses requêtes avec
+`credentials: 'include'` et, si l'API le demande, recopie son jeton anti-CSRF (lu dans le cookie
+prévu pour lui) dans l'en-tête convenu, sur **toute** requête qui écrit — une seule fois, dans le
+client du paquet `api`, jamais écran par écran. Le relais `/api` du développement ne montre pas
+ce cas : l'éprouver sur un environnement à deux domaines.
+
 ## Espaces de travail et permissions
 
 - La liste des espaces (`GET /api/me/workspaces`) porte, pour chacun, ses **permissions** ; un

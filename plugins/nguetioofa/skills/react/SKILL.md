@@ -58,6 +58,8 @@ de Nguetioofa et se suffit à lui-même : ses fiches portent les modèles d'un p
     régression casserait sans bruit (calcul, format, état d'un assistant), une règle de droits
     ou de données sensibles. Jamais pour tout et n'importe quoi (composant qui affiche, hook
     trivial, chaque variante d'un même cas). Peu de tests, mais chacun avec sa contre-épreuve.
+    **Le filet de non-régression** : des tests de bout en bout (Playwright) des parcours
+    critiques, et la CI qui rejoue tout à chaque push (`verification-et-tests.md`).
 
 ## 2. La manière de travailler
 
@@ -99,6 +101,11 @@ de Nguetioofa et se suffit à lui-même : ses fiches portent les modèles d'un p
 Sens des dépendances : `apps` → `packages` ; `ui-web` → `ui-core` → `tokens` ; une
 fonctionnalité n'importe jamais une autre fonctionnalité. Détail :
 [`references/structure.md`](references/structure.md).
+
+**Niveau du projet**, décidé avec l'utilisateur à la création et écrit dans le `CLAUDE.md` :
+**complet** (le monorepo et ses paquets ci-dessus, système d'UI du projet) ou **léger** (outil
+interne : `apps/web` et `packages/api` seulement, composants d'une bibliothèque sans style
+habillés par les tokens ; les autres paquets naissent le jour d'un deuxième consommateur réel).
 
 ## 4. Déroulé d'une livraison (une page, une fonctionnalité)
 

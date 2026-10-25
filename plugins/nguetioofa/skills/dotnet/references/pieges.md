@@ -70,6 +70,9 @@ liste avant de déclarer une livraison terminée.
 | Fenêtre glissante sans `Retry-After` | le 429 ne dit pas quand réessayer | repli sur la durée d'une tranche (commentaire honnête) |
 | SMS avec `ê â î ô û ç` | 70 caractères au lieu de 160, plusieurs SMS facturés | contrôle GSM-7 au démarrage, reformuler |
 | Code ou numéro au journal | secret lisible par qui lit les journaux | jamais d'adresse, de numéro ni de contenu (sauf le faux SMS **de dev**, qui le fait exprès — le dire) |
+| `SameSite=None` sans contrôle d'origine | n'importe quel site écrit avec la session de la personne (CSRF) | origine refusée en 403 et/ou jeton anti-CSRF ; refus de démarrer sinon |
+| Pas de HSTS ni d'en-têtes de sécurité | rétrogradation en HTTP, réponse interprétée ou encadrée | `UseHsts`, `nosniff`, CSP `default-src 'none'`, `no-store` sur les données de la personne |
+| Second facteur « plus tard » pour les administrateurs | un mot de passe volé ouvre le back-office | second facteur obligatoire avant la mise en service |
 
 ## Outillage
 
@@ -84,3 +87,6 @@ liste avant de déclarer une livraison terminée.
 | xUnit 2.9 | `Assert.SkipWhen` n'existe pas | boucle de réessai |
 | Test sans contre-épreuve | il passe aussi quand la règle est cassée | casser, voir échouer, restaurer |
 | Affirmation non vérifiée écrite dans la doc | elle se propage (CLAUDE.md, mémoire, commentaires) | vérifier avant d'écrire ; corriger partout et le dire |
+| Fichier de 1 000 lignes | personne ne le relit en entier, une règle s'y cache | test de taille (400 lignes), découper |
+| Vérification à l'exécution par des scripts jetés | la phase suivante casse la précédente sans bruit | tests d'intégration HTTP et CI à chaque push |
+| Aucune vérification des dépendances | une faille connue part en production | scan à chaque push, faille haute ou critique bloquante |

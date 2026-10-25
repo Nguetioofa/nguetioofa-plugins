@@ -31,7 +31,8 @@ le schéma, puis le code. Ce document du projet fait foi ensuite.
 ## Tables
 
 `Users` (identité, identifiants vérifiés, langue, fuseau, statut), `UserSecurity`
-(empreinte du mot de passe, compteur d'échecs, `LockedUntil`, 2FA à venir), `UserDevices`
+(empreinte du mot de passe, compteur d'échecs, `LockedUntil`, secret du second facteur
+chiffré, codes de secours en empreinte), `UserDevices`
 (une ligne par appareil : `Fingerprint` = identifiant d'installation, statut
 ACTIVE/REVOKED/BLOCKED), `UserSessions` (`BIGINT`, `RefreshTokenHash`,
 `PreviousRefreshTokenHash`, `RefreshedAt`, échéances glissante et absolue, révocation),
@@ -51,7 +52,13 @@ ACTIVE/REVOKED/BLOCKED), `UserSessions` (`BIGINT`, `RefreshTokenHash`,
 - Règles : **8 à 128 caractères** (bornes dans `Settings`), **aucune règle de
   composition** (une phrase vaut mieux que `Mdp!2026`) ; le plafond empêche un mot de passe
   démesuré de transformer le hachage en attaque. Règle partagée (`PasswordRules`) entre
-  inscription, réinitialisation et changement.
+  inscription, réinitialisation et changement. Sans second facteur, monter la longueur
+  minimale (vérifier la recommandation en vigueur, NIST SP 800-63B, avant de régler la borne).
+- **Un mot de passe connu comme compromis est refusé** (inscription, changement,
+  réinitialisation) : liste locale des plus courants, et/ou le service « Pwned Passwords » par
+  **k-anonymat** (seuls les 5 premiers caractères de l'empreinte SHA-1 partent ; jamais le mot de
+  passe ni son empreinte entière). Le service injoignable n'empêche pas l'inscription : il se
+  journalise, et la liste locale suffit.
 
 ## Connexion
 
@@ -131,6 +138,25 @@ ACTIVE/REVOKED/BLOCKED), `UserSessions` (`BIGINT`, `RefreshTokenHash`,
   sous le même site (`app.…` / `api.…`), et en développement derrière le proxy du serveur
   front.
 
+### Front et API sur deux sites : `SameSite=None` et la protection CSRF
+
+`SameSite=Strict` ne protège que si le front et l'API sont **sur le même site** (même domaine
+enregistrable : `app.exemple.com` et `api.exemple.com`). Si ce n'est pas possible (domaines
+différents, retour d'un prestataire de paiement qui doit garder la session), les cookies passent
+en `SameSite=None; Secure` — et le navigateur les envoie alors avec une requête venue de
+n'importe quel site. Il faut donc, **sur toute requête qui écrit** :
+
+- **refuser une origine inconnue** : l'en-tête `Origin` (ou, à défaut, `Sec-Fetch-Site` /
+  `Referer`) doit être dans la liste des origines permises, sinon `403 REQUEST_REJECTED`, avant
+  toute lecture ;
+- **et/ou exiger un jeton anti-CSRF** (double envoi : un cookie lisible par le front et le même
+  jeton dans un en-tête `X-CSRF-Token`, comparés en temps constant) ;
+- garder le JSON seul (`415` sinon) et CORS strict (origines nommées, cookies permis, jamais `*`).
+
+Le réglage (`Strict` / `Lax` / `None`) est un paramètre de configuration, `Strict` par défaut ;
+le passage à `None` sans le contrôle d'origine fait refuser le démarrage. Le front envoie alors
+ses requêtes avec `credentials: 'include'`.
+
 ### Mobile : les jetons dans le corps
 
 - `data.tokens` à la connexion ; stockage sécurisé (Keychain/Keystore) ; `Authorization:
@@ -138,6 +164,21 @@ ACTIVE/REVOKED/BLOCKED), `UserSessions` (`BIGINT`, `RefreshTokenHash`,
   réponse = **garder le sien** (cas `ReissueAccessOnly`). La plateforme déclarée à la
   connexion (`WEB`, `ANDROID`, `IOS`) décide du mode de livraison
   (`ISessionDelivery` : cookies ou corps).
+
+## Second facteur
+
+- **Obligatoire avant la mise en service pour tout compte qui administre** (back-office,
+  plateforme, propriétaire d'une organisation) ; proposé aux autres. TOTP (RFC 6238 : 6 chiffres,
+  30 s, tolérance d'un pas), secret **chiffré** en base, pas déjà utilisé refusé (même code
+  rejoué : refus), essais comptés comme ceux d'un mot de passe.
+- La connexion se fait en deux temps : mot de passe, puis un **jeton de défi** court, lié au
+  compte, à l'étape et à l'appareil, qui n'ouvre aucune session tant que le second facteur n'est
+  pas passé.
+- **Codes de secours** (une dizaine, à usage unique, en empreinte), montrés une seule fois ;
+  désactiver le second facteur exige le mot de passe **et** un code valide ; chaque geste se trace
+  et alerte la personne.
+- Changer ou réinitialiser le mot de passe efface un secret de second facteur encore en attente
+  d'activation.
 
 ## Codes à usage unique (OTP)
 
@@ -203,7 +244,8 @@ plateforme** et l'audit ne montre que nginx. Correction :
 | Vol d'un jeton de rafraîchissement | rotation, 2 générations refusées, rejeu tracé, révocation d'appareil |
 | Jeton d'accès volé | 15 min de vie, session vérifiée à chaque requête |
 | Script injecté (XSS) | aucun jeton lisible par la page : cookies `HttpOnly` |
-| CSRF | `SameSite=Strict`, JSON seul |
+| CSRF | `SameSite=Strict`, JSON seul ; sur deux sites, `SameSite=None` + origine contrôlée et/ou jeton anti-CSRF |
+| Mot de passe volé ailleurs | mots de passe compromis refusés ; second facteur obligatoire pour qui administre |
 | Cookie exposé (journal de proxy) | cookies chiffrés |
 | Code deviné | 10 min, 5 essais comptés avant comparaison, dernier code seul, envois plafonnés |
 | Énumération des identifiants | seuls des UUID aléatoires sortent |

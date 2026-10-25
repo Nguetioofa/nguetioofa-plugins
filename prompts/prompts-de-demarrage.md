@@ -53,6 +53,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -102,6 +107,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -148,6 +158,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -190,6 +205,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -233,6 +253,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -275,6 +300,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -312,6 +342,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -360,6 +395,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -401,6 +441,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```
@@ -440,6 +485,11 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
   avec sa raison ; tu contrôles chaque rapport (build, tests, exécution) avant de me le présenter ;
   relecture à froid par nguetioofa:verif de chaque étape sensible (sécurité, permissions, données,
   argent).
+- Le niveau du projet (complet : données sensibles, argent, plusieurs organisations ; léger :
+  outil interne) se décide avec moi dès le cadrage, et s'écrit dans le CLAUDE.md.
+- Dès l'étape 0 : la CI (build, tests, scan des dépendances à chaque push) ; ensuite, chaque
+  route a ses tests d'intégration HTTP (cas nominal et refus principaux) et chaque parcours
+  critique son test Playwright : ce qui a été vérifié une fois se rejoue toujours.
 - Ne code que ce qui est demandé ; vérifie à l'exécution avant d'affirmer ; aucun secret dans git
   ni dans la conversation ; je committe moi-même, sans ligne Co-Authored-By.
 ```

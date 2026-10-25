@@ -7,10 +7,20 @@ en bâtir un.
 
 ## La bibliothèque maison
 
-- Pas de bibliothèque de composants tierce. Utilitaires **sans rendu** admis :
-  `@floating-ui/react-dom` (positionner menus et listes), `@tanstack/react-virtual`
-  (longues listes), `lucide-react` (icônes). Modales et panneaux : `<dialog>` natif
-  (`showModal()` donne le piège du focus, `Échap` et l'arrière-plan inerte).
+- **Pas de bibliothèque de composants stylés** (pas de MUI, Ant, Chakra…) : l'apparence est
+  celle du système d'UI. Mais **le comportement des composants difficiles vient d'une
+  bibliothèque sans style reconnue** — liste de choix et saisie assistée, sélecteur de dates,
+  menu, onglets, fenêtre, info-bulle, curseur : React Aria Components (`react-aria-components`)
+  ou Radix Primitives, une seule des deux par projet. Le clavier, le focus, l'ARIA et les
+  lecteurs d'écran y sont déjà justes ; le composant maison les habille par les tokens et fixe
+  son API. Vérifier la version courante et son poids avant de l'ajouter (proposition à
+  l'utilisateur).
+- Écrits entièrement à la main : les composants simples (bouton, champ, badge, carte) et ce
+  qu'aucune bibliothèque ne fait comme le projet le veut, à condition de le dire.
+- Utilitaires **sans rendu** admis : `@floating-ui/react-dom` (positionner), `@tanstack/react-table`
+  et `@tanstack/react-virtual` (tableaux et longues listes), `lucide-react` (icônes). Une
+  modale simple peut rester un `<dialog>` natif (`showModal()` donne le piège du focus, `Échap`
+  et l'arrière-plan inerte).
 - **Logique dans `ui-core`, rendu dans `ui-web`** : `useSelect` (filtre local sans accents,
   recherche distante avec délai et annulation, sélection multiple, clavier) est partageable
   avec un futur rendu mobile ; `<Select>` (DOM + classes) ne l'est pas.

@@ -54,6 +54,9 @@ catalog:
 | `i18n` | configuration i18next, langues, textes communs (`common`, `errors`) fr / en, table des libellés techniques des composants | — | textes d'une fonctionnalité |
 | `config` | `tsconfig` et règles ESLint partagées | — | code |
 
+- **Niveau léger** (outil interne) : seulement `apps/web` et `packages/api` au départ ; tokens,
+  textes et composants vivent dans `apps/web/src/shared/` et passent en paquet le jour où un
+  deuxième consommateur réel arrive.
 - Nom : `@<projet>/<paquet>` (`@projet/ui-web`).
 - Chaque paquet expose son contenu par `package.json` → `"exports"` et un `src/index.ts`
   qui **liste** ce qui est public ; on n'importe jamais un fichier interne d'un paquet

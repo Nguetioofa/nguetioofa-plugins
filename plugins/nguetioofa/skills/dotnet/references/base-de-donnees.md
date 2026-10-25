@@ -88,15 +88,23 @@ dans le schéma : il s'exécute d'un bout à l'autre sur une base vide.
 
 ---
 
-## Aucune logique en base
+## Aucune logique en base, un filet pour les invariants
 
-- Interdits : fonction, déclencheur, procédure, `CHECK` (ni regex, ni `lower()`, ni
-  énumération), vue matérialisée de calcul, `COMMENT ON` (les commentaires vivent **dans le
-  fichier**, jamais dans le catalogue).
+- Interdits : fonction, déclencheur, procédure, vue matérialisée de calcul, `CHECK` qui porte
+  une règle métier ou un format (ni regex, ni `lower()`, ni liste de valeurs d'une énumération :
+  elle change avec le code), `COMMENT ON` (les commentaires vivent **dans le fichier**, jamais
+  dans le catalogue).
 - Permis : PK, FK, UNIQUE, NOT NULL, DEFAULT, index (y compris **filtrés** :
-  `WHERE "IsDeleted" = false`).
-- Contrepartie assumée et écrite : un bug de l'API n'est pas rattrapé par la base. Les
-  validateurs sont la seule barrière — ils se testent comme tels.
+  `WHERE "IsDeleted" = false`), et un **`CHECK` simple sur une seule ligne** pour un invariant
+  qui ne doit jamais casser, quelle que soit la règle métier du moment : un montant ou une
+  quantité positive, une date de fin après le début, un pourcentage entre 0 et 100. Nommé
+  `CK_<Table>_<Sujet>`, déclaré aussi dans la configuration EF
+  (`ToTable(t => t.HasCheckConstraint("CK_…", "…"))`) pour que la comparaison au catalogue le
+  voie.
+- **L'API juge d'abord**, avec un message clair : un `CHECK` qui refuse une écriture est un bug
+  de l'API (un `500`, au journal), jamais une réponse prévue. Les validateurs restent la seule
+  barrière que voit l'utilisateur — ils se testent comme tels ; le `CHECK` rattrape ce qu'ils
+  ont laissé passer, et ce qu'un script écrit à la main.
 
 ---
 

@@ -22,9 +22,10 @@ déroger à une règle générale, et il le dit. Ce skill donne le défaut.
 
 1. **La base fait foi (database-first).** Le schéma SQL est écrit d'abord, à la main ; le
    modèle EF le recopie, jamais l'inverse. Pas de migrations EF.
-2. **La base stocke, l'API décide.** Ni fonction, ni déclencheur, ni procédure, ni `CHECK`.
-   Seulement PK, FK, UNIQUE, NOT NULL, valeurs par défaut, index. Toute règle absente de
-   l'API est un trou.
+2. **La base stocke, l'API décide.** Ni fonction, ni déclencheur, ni procédure. Seulement PK,
+   FK, UNIQUE, NOT NULL, valeurs par défaut, index — et un `CHECK` simple pour un invariant qui
+   ne doit jamais casser (un montant positif, une date de fin après le début), comme filet :
+   l'API le juge d'abord. Toute règle absente de l'API est un trou.
 3. **Une issue attendue n'est pas une exception.** Introuvable, doublon, règle métier : un
    `Result` en échec, avec un code stable et un message traduit. Les exceptions sont pour
    l'imprévu.
@@ -51,10 +52,12 @@ déroger à une règle générale, et il le dit. Ce skill donne le défaut.
    l'ancien état est dans l'historique git.
 10. **Vérifier avant d'affirmer.** Compiler ne prouve rien : la plupart des défauts de ces
     projets ne se voient qu'à l'exécution. On lance, on appelle, on lit la base.
-11. **Un test seulement pour ce qui vaut vraiment la peine** : une règle de sécurité, une
-    logique pure qu'une régression casserait sans bruit, une isolation. Jamais pour tout et
+11. **Un test unitaire seulement pour ce qui vaut vraiment la peine** : une règle de sécurité,
+    une logique pure qu'une régression casserait sans bruit, une isolation. Jamais pour tout et
     n'importe quoi (contrôleur qui délègue, mapping, validateur de longueur, DTO, chaque cas
-    d'un même chemin). Peu de tests, mais chacun avec sa contre-épreuve.
+    d'un même chemin). Peu de tests, mais chacun avec sa contre-épreuve. **Le filet de
+    non-régression, ce sont les tests d'intégration HTTP** : chaque route, son cas nominal et
+    ses refus principaux, rejoués à chaque push par la CI (`verification-et-tests.md`).
 
 ---
 
@@ -93,7 +96,7 @@ déroger à une règle générale, et il le dit. Ce skill donne le défaut.
 
 ---
 
-## 3. Trois questions avant de toucher un fichier
+## 3. Quatre questions avant de toucher un fichier
 
 1. **Quel type de projet ?** API REST, MVC / Razor Pages, Blazor (Server, WebAssembly, Web App),
    tâche de fond. La présentation, la façon de rendre une erreur et la session en dépendent →
@@ -106,6 +109,10 @@ déroger à une règle générale, et il le dit. Ce skill donne le défaut.
 3. **Généré ou écrit à la main ?** `projectgen.json` présent et fichiers `*.g.cs` → le code
    sort de ProjectGenerator ; une correction au mauvais endroit disparaît à la régénération →
    [`references/generateur.md`](references/generateur.md). Sinon, tout s'écrit à la main.
+4. **Quel niveau ?** **Complet** (données sensibles, argent, plusieurs organisations, ouvert au
+   public) ou **léger** (outil interne, petit CRUD) : ce que le niveau léger s'autorise à laisser
+   de côté est dans [`references/types-de-projets.md`](references/types-de-projets.md). À
+   décider avec l'utilisateur à la création, et à écrire dans le `CLAUDE.md` du projet.
 
 La philosophie, la base et les conventions sont les mêmes dans tous les cas.
 

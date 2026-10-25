@@ -17,6 +17,31 @@ système sert plusieurs organisations isolées. Sans lui, les marques `ITenantSc
 
 ---
 
+## Le niveau du projet : complet ou léger
+
+Choisi avec l'utilisateur à la création, écrit dans le `CLAUDE.md` du projet. Un projet peut
+passer de léger à complet ; l'inverse ne se fait pas.
+
+- **Complet** : données sensibles (santé, mineurs, identité), argent, plusieurs organisations,
+  ouvert au public. Tout ce skill s'applique.
+- **Léger** : outil interne, petit CRUD, quelques utilisateurs connus. Il s'autorise à laisser
+  de côté :
+  - les catalogues typés en base (`Settings` modifiables à chaud) : `appsettings` et des
+    options typées (`IOptions<T>`) suffisent ;
+  - Autofac : l'injection intégrée de .NET suffit, toujours enregistrée un par un ;
+  - le journal d'audit détaillé : garder la trace des seuls gestes sensibles (connexion,
+    droits, suppression) ;
+  - les tests d'architecture au-delà de la taille des fichiers et des `IgnoreQueryFilters()` ;
+  - les outils de dev de vérification de l'isolation (pas de tenant) ;
+  - la rotation fine des jetons et les appareils, si l'authentification passe par un
+    fournisseur d'identité de l'organisation.
+
+  Il **garde toujours** : la base qui fait foi, le pattern `Result` et une seule forme d'erreur,
+  la validation, le bilingue si le projet l'est, les `PublicId`, une permission par action, les
+  secrets hors de git, les en-têtes de sécurité, les tests d'intégration HTTP et la CI.
+
+---
+
 ## API REST (front séparé ou application mobile)
 
 C'est le cas que décrivent `socle-api.md` et `tranche-verticale.md` (contrôleur) : enveloppe

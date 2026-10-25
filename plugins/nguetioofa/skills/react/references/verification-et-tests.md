@@ -49,5 +49,25 @@ Outils et règles :
 - Réseau simulé au niveau du `fetch` (réponses d'enveloppe réalistes, dont les erreurs),
   jamais un vrai appel.
 - **Contre-épreuve** : casser la règle, voir le test échouer, restaurer.
-- **Playwright** (bout en bout) plus tard, pour les parcours critiques (connexion,
-  encaissement).
+## Tests de bout en bout (Playwright)
+
+- **Dès le premier parcours critique**, pas « plus tard » : la connexion et la déconnexion, puis
+  un parcours par fonctionnalité sensible (droits, argent, données personnelles), contre une API
+  d'essai et une base d'essai, jamais celles de l'utilisateur.
+- Chercher les éléments par rôle et nom, comme dans Testing Library ; une session par personne
+  de test (`storageState`) ; vérifier en fr et en en au moins une fois par parcours.
+- Peu nombreux et stables : un test qui échoue au hasard se répare ou se retire, il ne
+  s'ignore pas.
+
+## Intégration continue
+
+**À chaque push** : `pnpm install --frozen-lockfile`, `pnpm typecheck`, `pnpm lint`,
+`pnpm test`, le build, les tests Playwright (avec l'API et la base d'essai du pipeline), et
+`pnpm audit --prod` (une faille haute ou critique fait échouer le pipeline). Écrit au squelette du
+projet, pas à la fin.
+
+## La taille des fichiers
+
+La règle d'ESLint `max-lines` (400 lignes, lignes vides et commentaires exclus) est **en erreur**
+pour le code (pas pour les tests ni le client généré) ; une exception se déclare dans le fichier,
+avec sa raison. Un composant de plus de ~150 lignes ou de trois responsabilités se découpe.
