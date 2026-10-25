@@ -6,6 +6,7 @@ Marketplace personnelle de plugins Claude Code. Elle contient un plugin, **`ngue
 |---|---|---|
 | skill | `nguetioofa:dotnet` | méthode pour tout projet .NET : API, MVC, Razor Pages, Blazor, tâche de fond ; gabarit de socle d'API dans `skills/dotnet/assets/socle/` |
 | skill | `nguetioofa:react` | méthode pour tout front React + TypeScript |
+| skill | `nguetioofa:reflexion-quatre-axes` | grille de réflexion du coordinateur (vitesse, altitude, profondeur, portée), à l'ouverture d'une phase ou sur demande |
 | agent | `nguetioofa:dev-back` | développeur .NET (Opus) |
 | agent | `nguetioofa:dev-front` | développeur React (Opus) |
 | agent | `nguetioofa:verif` | relecteur à froid, lecture seule (Opus) |

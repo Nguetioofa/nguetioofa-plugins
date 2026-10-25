@@ -410,7 +410,7 @@ Méthode (à suivre, et à écrire dans les CLAUDE.md du projet) :
 Ouvre la phase <N> de <Nom> : <sujet en une phrase>.
 
 Lis le CLAUDE.md racine et ceux des dépôts, le plan de la phase précédente (son bilan, ses suites,
-ses décisions ouvertes), la feuille de route, et la mémoire. Charge le skill reflexion-quatre-axes
+ses décisions ouvertes), la feuille de route, et la mémoire. Charge le skill nguetioofa:reflexion-quatre-axes
 s'il est là. Puis :
 1. Explore (code, base, terrain métier ; recherche si utile, versionnée).
 2. Cadre avec moi, une décision à la fois, en QCM.
