@@ -6,5 +6,6 @@
   "author": { "name": "Nguetioofa" },
   "homepage": "https://github.com/Nguetioofa/nguetioofa-plugins",
   "repository": "https://github.com/Nguetioofa/nguetioofa-plugins",
+  "license": "MIT",
   "keywords": ["dotnet", "aspnetcore", "efcore", "react", "typescript", "agents"]
 }
