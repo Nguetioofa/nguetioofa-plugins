@@ -6,6 +6,7 @@ Marketplace personnelle de plugins Claude Code. Elle contient un plugin, **`ngue
 |---|---|---|
 | skill | `nguetioofa:dotnet` | méthode pour tout projet .NET : API, MVC, Razor Pages, Blazor, tâche de fond ; gabarit de socle d'API dans `skills/dotnet/assets/socle/` |
 | skill | `nguetioofa:react` | méthode pour tout front React + TypeScript |
+| skill | `nguetioofa:ergonomie-tableau-de-bord` | ergonomie d'une application à tableau de bord, fondée sur la recherche : organiser l'accueil, placer, structurer le menu, budget de clics par fréquence, charge mentale, audit d'un écran |
 | skill | `nguetioofa:reflexion-quatre-axes` | grille de réflexion du coordinateur (vitesse, altitude, profondeur, portée), à l'ouverture d'une phase ou sur demande |
 | skill | `nguetioofa:consigne-agent` | avant de lancer un agent : l'étape peut-elle partir, quel agent et quel effort, la consigne en 8 rubriques |
 | skill | `nguetioofa:controle-etape` | après le rapport d'un agent : build et tests, migrations, documentation, ménage, relecture à froid, compte rendu |

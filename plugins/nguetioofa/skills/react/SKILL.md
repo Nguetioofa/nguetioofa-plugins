@@ -16,6 +16,10 @@ de Nguetioofa et se suffit à lui-même : ses fiches portent les modèles d'un p
 - **Le système d'UI du projet** (son skill d'UI, s'il en a un) l'emporte pour tout ce qui se
   voit : couleurs, composants, écrans, textes. Sans lui, les règles de
   [`composants-et-styles.md`](references/composants-et-styles.md) suffisent.
+- **L'organisation des écrans** (accueil et tableau de bord, menu, place des éléments, nombre de
+  gestes, raccourcis vers les pages complémentaires) suit le skill `ergonomie-tableau-de-bord` du
+  même plugin : chaque page mène à ses pages voisines par des liens en contexte et une rangée
+  « Voir aussi ».
 - **L'utilisateur vient de Blazor** (et connaît JS, HTML, CSS) : chaque explication rattache
   la notion React à son équivalent Blazor — voir
   [`references/blazor-vers-react.md`](references/blazor-vers-react.md).
